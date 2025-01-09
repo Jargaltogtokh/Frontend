@@ -3,6 +3,8 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import RootLayout from "./layout";
 import Add from "@/component/addbutton";
+import EditButton from "@/component/EditButton";
+import DeleteButton from "@/component/DeleteButton";
 
 type Movie = {
   id: number;
@@ -26,17 +28,24 @@ export default function Home() {
         <thead>
           <tr>
             <th className="px-4 py-2 text-left"> Movies</th>
+            <th className="px-4 py-2">
+              {" "}
+              <Add />{" "}
+            </th>
           </tr>
         </thead>
         <tbody>
           {movies.map((movie, index) => (
             <tr key={index}>
               <td> {movie.name} </td>
+              <td className="flex px-4 py-2 gap-5">
+                <EditButton movie={movie} />
+                <DeleteButton movie={movie} />
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Add />
     </>
   );
 }

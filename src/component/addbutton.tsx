@@ -28,42 +28,44 @@ export default function Add() {
     setMovieName("");
   };
   return (
-    <div>
+    <>
       <button onClick={openModal}>Add movie</button>
       {isOpen && (
         <div
           style={{
             height: "100vh",
-            backgroundColor: "rgba(0,0,0,0.5)",
-            alignContent: "center",
+            width: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            position: "fixed",
+            top: 0,
+            left: 0,
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <div
             style={{
-              height: 500,
-              width: 800,
-              backgroundColor: "white",
-              borderRadius: 16,
-              margin: "auto",
-              padding: 48,
+              background: "white",
+              padding: "20px",
+              borderRadius: "8px",
+              margin: "10px",
             }}
           >
-            <button onClick={closeModal}>Close</button>
+            <h2>Add a new movie</h2>
             <input
-              style={{
-                width: 256,
-                height: 56,
-                border: "1px solid black",
-                padding: 4,
-              }}
-              placeholder="Write a movie"
+              type="text"
               value={movieName}
               onChange={(e) => setMovieName(e.target.value)}
-            ></input>
-            <button onClick={submitModal}>Submit</button>
+              placeholder="Enter movie name"
+            />
+            <div style={{ display: "flex", gap: "10px" }}>
+              <button onClick={closeModal}>Close</button>
+              <button onClick={submitModal}>Submit</button>
+            </div>
           </div>
         </div>
       )}
-    </div>
+    </>
   );
 }
